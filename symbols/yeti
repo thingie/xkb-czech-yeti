@@ -1,0 +1,100 @@
+// Yeti's Czech keyboard symbols for XKB and PC keyboard
+// ignores numlock and implements intelligent capslock,
+// since XFree86-4.3 it just uses the intelligent capslock
+// provided there.
+//
+// (C) 2000,2003 David Necas <yeti@physics.muni.cz>
+//
+// roughly based on file czsk
+// (C) 1997,1999 Stanislav Meduna, stano@eunet.sk
+// and other files by unidentified XFree86 authors
+// (C) 1996 X Consortium
+//
+// Permission is granted to anyone to use, distribute and modify
+// this file in any way, provided that the above copyright notice
+// is left intact and the author of the modification summarizes
+// the changes in this header.
+//
+// This file is distributed without any expressed or implied warranty.
+
+partial alphanumeric_keys modifier_keys keypad_keys xkb_symbols "default" {
+  include "pc(pc105)"
+  include "us(basic)"
+  include "group(shifts_toggle)"
+
+  Name[Group1] = "US/ASCII";
+  Name[Group2] = "Czech";
+
+  key <PAUS> { [ Multi_key ] };
+  key <RWIN> { [ Mode_switch ] };
+  //key <LWIN> { [ Mode_switch ] };
+  // Doesn't work
+  key <MENU> { [ Control_R ] };
+  key <SCLK> { [ ISO_Next_Group, ISO_Next_Group ] };
+
+  modifier_map Shift { Shift_L, Shift_R };
+  modifier_map Control{ Control_L, Control_R };
+  modifier_map Lock { Caps_Lock };
+  modifier_map Mod1 { Alt_L, Alt_R };
+  modifier_map Mod3 { Mode_switch };
+  modifier_map Mod5 { Scroll_Lock };
+
+  key <NMLK> { [ equal, colon ] };
+
+  key <KP7> { [ 7 ] };
+  key <KP8> { [ 8 ] };
+  key <KP9> { [ 9 ] };
+
+  key <KP4> { [ 4 ] };
+  key <KP5> { [ 5 ] };
+  key <KP6> { [ 6 ] };
+
+  key <KP1> { [ 1 ] };
+  key <KP2> { [ 2 ] };
+  key <KP3> { [ 3 ] };
+  key <KPEN> { type = "ONE_LEVEL", [ Return ] };
+
+  key <KP0> { [ 0 ] };
+  key <KPDL> { [ period ] };
+
+  key.type = "FOUR_LEVEL";
+  key <TLDE> { [ grave, asciitilde ], [ dead_diaeresis, dead_abovering ] };
+  key <AE01> { [ 1, exclam ], [ plus, exclam ] };
+  key <AE02> { [ 2, at ], [ ecaron, at ] };
+  key <AE03> { [ 3, numbersign ], [ scaron, numbersign ] };
+  key <AE04> { [ 4, dollar ], [ ccaron, dollar ] };
+  key <AE05> { [ 5, percent ], [ rcaron, percent ] };
+  key <AE06> { [ 6, asciicircum ], [ zcaron, asciicircum ] };
+  key <AE07> { [ 7, ampersand ], [ yacute, ampersand ] };
+  key <AE08> { [ 8, asterisk ], [ aacute, asterisk ] };
+  key <AE09> { [ 9, parenleft ], [ iacute, parenleft ] };
+  key <AE10> { [ 0, parenright ], [ eacute, parenright ] };
+  key <AE12> { [ equal, plus ], [ dead_acute, dead_caron ] };
+  key <AC11> { [ apostrophe, quotedbl ], [ U201E, U201C ] };
+};
+
+partial alphanumeric_keys xkb_symbols "qwertz" {
+  include "yeti(default)"
+  key <AD06> { [ z, Z ] };
+  key <AB01> { [ y, Y ] };
+};
+
+partial alphanumeric_keys xkb_symbols "caps_tab" {
+  include "yeti(default)"
+  key <CAPS> { [ Tab, ISO_Left_Tab ] };
+};
+
+partial alphanumeric_keys xkb_symbols "typist" {
+  include "yeti(qwertz)"
+  key <AE11> { [ minus, underscore ], [ equal, percent ] };
+  key <AD11> { [ bracketleft, braceleft ], [ uacute, slash ] };
+//  key <AC11> { [ apostrophe, quotedbl ], [ section, exclam ] };
+  key <AB08> { [ comma, less ], [ comma, question ] };
+  key <AB09> { [ period, greater ], [ period, colon ] };
+  key <AB10> { [ slash, question ], [ minus, underscore ] };
+  key <AC10> { [ semicolon, colon ], [ uring, quotedbl ] };
+  key <AD12> { [ bracketright, braceright ], [ parenright, parenleft ] };
+  key <BKSL> { [ backslash, bar ], [ ncaron, semicolon ] };
+};
+
+// vim: set ft=xkb :

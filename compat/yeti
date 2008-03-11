@@ -1,0 +1,22 @@
+// "group_led" without numlock and pointer keys
+default xkb_compatibility "yeti"  {
+  include "nonumlock"
+  augment "misc"
+  augment "mousekeys"
+  augment "accessx(basic)"
+  augment "iso9995"
+  augment "xfree86"
+
+  virtual_modifiers AltGr;
+  interpret Mode_switch {
+    useModMapMods = level1;
+    virtualModifier = AltGr;
+    action = SetGroup(group=+1);
+  };
+  indicator "Num Lock" {
+    allowExplicit;
+    groups = All-Group1;
+  };
+};
+
+// vim: set ft=xkb :
