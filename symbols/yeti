@@ -39,6 +39,10 @@ partial alphanumeric_keys modifier_keys keypad_keys xkb_symbols "default" {
   modifier_map Mod3 { Mode_switch };
 //  modifier_map Mod5 { Scroll_Lock };
 
+  key <FK16> { [ XF86AudioMute ] }; //mute
+  key <FK17> { [ XF86AudioLowerVolume ] }; //volume down
+  key <KPDC> { [ XF86AudioRaiseVolume ] }; //volume up
+
   key <NMLK> { [ equal, colon ] };
 
   key <KP7> { [ 7 ] };
