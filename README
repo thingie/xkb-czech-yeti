@@ -1,0 +1,12 @@
+Slightly modified XKB layout, originally from David Necas <yeti@physics.muni.cz>
+(see symbols/yeti).
+
+Basically, it's an us layout with a second group with some czech accents, switched
+by left shift + right shift. It also adds few symbols like „proper czech quotation
+marks“.
+
+You have to manually load it with
+
+setxkbmap -compat yeti -symbols yeti
+
+Until we all live in the bright Wayland wonderland future, of course. 
